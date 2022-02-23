@@ -2,10 +2,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -39,7 +41,20 @@ public class TestCase7 {
         driver.findElement(By.xpath("//*[@id=\"text-22-sub_row_1-0-2-2-0\"]/div/ul/li/a[1]")).click();
         //Click on add to cart
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        //Click on add to cart one more
+        //Get Only number are in stock
+        WebElement basket = driver.findElement(By.xpath("//p[@class='stock in-stock']"));
+        String str =basket.getText();
+        str=str.replaceAll("[^0-9]", "");
+        System.out.println(str);
+        //add one more 1 order to current available stock
+        //convert String to Integer
+        int addOder = Integer.parseInt(str);
+        addOder=addOder+1;
+        //convert int to String
+        String newStr=String.valueOf(addOder);
+        //System.out.println(newStr);
+        driver.findElement(By.xpath("//input[@type='number']")).sendKeys(Keys.chord(Keys.CONTROL, "1", Keys.DELETE), newStr);
+        //driver.findElement(By.xpath("//input[@type='number']")).sendKeys(newStr);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
     }
