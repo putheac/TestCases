@@ -62,6 +62,7 @@ public class TestCase9 {
         //Apply coupon again
         driver.findElement(By.id("coupon_code")).sendKeys("krishnasakinala");
         driver.findElement(By.xpath("//input[@type='submit']")).click();
+        //Show coupon text if it works
         WebElement showCouponCode=driver.findElement(By.xpath("//tr[@class='cart-discount coupon-krishnasakinala']"));
         System.out.println(showCouponCode.getText());
 
