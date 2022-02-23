@@ -2,7 +2,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class TestCase9 {
+public class TestCase11 {
     WebDriver driver;
     private String url = "http://practice.automationtesting.in/";
 
@@ -45,15 +44,9 @@ public class TestCase9 {
         System.out.println(showPrice.getText());
         //12) Now click on Item link which navigates to proceed to check out page.
         showPrice.click();
-        //13) User can click on the Item link in menu item after adding the book in to the basket which leads to the check out page
-//
-        //14) Enter the Coupon code as ‘krishnasakinala’ to get 50rps off on the total.
-        driver.findElement(By.id("coupon_code")).sendKeys("krishnasakinala");
-        //15) User can able to apply coupon by entering ‘krishnasakinala’ in the coupon textbox which give 50rps off on the total price
-        driver.findElement(By.xpath("//input[@type='submit']")).click();
-//        WebElement checkCoupon = driver.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[1]/ul/li"));
-//        String isCouponWork = checkCoupon.getText();
-//        System.out.println(isCouponWork);
+        //13) Now click on Remove this icon in Check out page which removes that book from the grid.
+        driver.findElement(By.xpath("//a[@class='remove']")).click();
+        //14) User has the feasibility to remove the book at the time of check out also
 //        if (isCouponWork.contains("minimum")) {
 //            driver.findElement(By.xpath("//input[@type='number']")).sendKeys(Keys.chord(Keys.CONTROL, "1", Keys.DELETE), "3");
 //            driver.findElement(By.xpath("//input[@value='Update Basket']")).click();
